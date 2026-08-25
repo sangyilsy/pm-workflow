@@ -51,16 +51,17 @@ There are two kinds of work:
 
 **External intelligence work** — monitor what is changing outside your product and understand what it could mean for strategy.
 
-The core actions are:
+## The five core actions
 
 | Action | Use when | Example |
 |---|---|---|
-| **SETUP** | First time establishing product context | “Set up context for our AA verification product.” |
-| **INGEST / REFRESH** | New internal data, docs, links, or analysis arrive | “Add this month's CSAT analysis and update what we know.” |
-| **INTELLIGENCE BRIEF** | You want a recurring external landscape update | “Give me this week's AA intelligence brief.” |
-| **INTELLIGENCE SCAN** | You want a focused update on one topic | “Scan for major U16 age-assurance developments in the US this month.” |
+| **SETUP** | Establish or update shared product context | “Set up context for our AA verification product.” |
+| **REFRESH** | New internal or external information arrives | “Add this month's CSAT analysis and update what we know.” |
 | **SPAR** | You have an idea, hypothesis, or proposed priority and want to be challenged | “I think Q4 should focus on A/B/C. Challenge this.” |
-| **DECIDE / PLAN** | You need a recommendation, prioritization, roadmap, or OKR direction | “Given everything we know, what should we prioritize next quarter?” |
+| **DECIDE** | You need a recommendation, prioritization, roadmap, or OKR direction | “Given everything we know, what should we prioritize next quarter?” |
+| **MAJOR-EVENT SCAN** | A monitoring workflow checks for material external developments | Automatically run by the monitoring/automation layer; the PM can also request one manually. |
+
+You do not need separate commands for every kind of intelligence task. Ask naturally, and the relevant specialist intelligence capability should be used when needed.
 
 ---
 
@@ -106,9 +107,9 @@ A PRD or design is **not automatically a source of truth**. It records what the 
 
 ---
 
-## 2. INGEST / REFRESH — throw in new information
+## 2. REFRESH — throw in new information
 
-Use this whenever new internal information arrives.
+Use this whenever new information arrives, whether it is internal product evidence or a new external development you want incorporated into the context.
 
 Examples:
 
@@ -118,9 +119,9 @@ Examples:
 
 Or:
 
-> **INGEST**
+> **REFRESH**
 >
-> Here are a DS analysis, a case-review doc, vendor pricing, and some PM notes. Absorb them and update the evidence base.
+> Here is a new regulatory development. Add it to the AA context, explain which strategic hypotheses it affects, and tell me whether any open product decisions should be revisited.
 
 The workflow should:
 
@@ -149,11 +150,9 @@ The workflow should:
 
 ---
 
-# 3. EXTERNAL INTELLIGENCE — stay current on the outside world
+# External intelligence and monitoring
 
-Specialist Intelligence is different from the Product Opportunity Engine: it monitors **external developments** rather than your internal product evidence.
-
-For Age Assurance, the specialist skill monitors:
+Specialist Intelligence monitors **what is changing outside your product**. For Age Assurance, this includes:
 
 - Regulation and compliance
 - Competitor / industry moves
@@ -161,28 +160,51 @@ For Age Assurance, the specialist skill monitors:
 - Youth-safety and policy drivers
 - Cross-market strategic trends
 
-## Weekly intelligence brief
+The PM should not need to remember to manually check the world every day. The long-term design is:
 
-Use this as the default recurring cadence for staying current:
+```text
+External world
+      ↓
+Monitoring / scheduled trigger
+      ↓
+Specialist Intelligence
+      ↓
+Materiality filter
+      ↓
+Major event?
+   ↙       ↘
+ No         Yes
+ ↓           ↓
+Keep       Alert PM
+as context    +
+             update context
+```
 
-> **INTELLIGENCE BRIEF**
->
-> Give me this week's Age Assurance Strategic Intelligence brief.
->
-> Focus on the developments most likely to affect product strategy. Cover:
-> - top regulatory developments
-> - competitor / industry moves
-> - technology developments
-> - youth-safety / policy drivers
-> - cross-market trends
-> - strategic hypotheses that strengthened or weakened
-> - implications for our AA roadmap
-> - PM decisions / questions I should be thinking about
-> - watchlist for next week
+A skill is reactive by itself; **automatic Major-Event Scan requires a monitoring/automation layer to invoke the skill on a schedule or from an external trigger**.
 
-The brief should **not be a news dump**. It should prioritize developments that could change a product decision, roadmap, architecture, or compliance posture.
+### Weekly intelligence
 
-A good weekly brief should answer:
+Weekly intelligence is a **cadence**, not a separate core command.
+
+The PM can request it naturally:
+
+> “Give me this week's AA intelligence and tell me which developments could affect my roadmap.”
+
+A scheduled workflow can also run it automatically each week.
+
+The brief should prioritize:
+
+- Top regulatory developments
+- Competitor / industry moves
+- Technology developments
+- Youth-safety / policy drivers
+- Cross-market trends
+- Strategic hypotheses strengthened or weakened
+- Product / roadmap implications
+- PM decisions or questions worth considering
+- Watchlist
+
+It should **not be a news dump**. The brief should answer:
 
 > **What changed?**
 >
@@ -192,36 +214,27 @@ A good weekly brief should answer:
 >
 > **What should I monitor next?**
 
-### When to run it
+### Major-event monitoring
 
-A practical cadence is:
+The monitoring workflow should evaluate recent developments against a materiality threshold. Examples of potential major events include:
 
-- **Weekly:** broad intelligence brief to maintain situational awareness.
-- **Before quarterly planning:** broader strategic scan with emphasis on trends, strategic hypotheses, and roadmap implications.
-- **Before a major product decision:** focused intelligence scan on the specific question.
-- **After a major external event:** ad-hoc scan immediately rather than waiting for the weekly brief.
+- A law or regulation that materially changes platform obligations
+- A significant court decision
+- Major regulator guidance
+- A major platform changing its age-assurance approach
+- A meaningful technology development that changes the assurance/friction/cost trade-off
+- A development that materially strengthens or weakens a strategic hypothesis
+- An event likely to require product, architecture, policy, or roadmap response
 
-The PM can trigger these manually with the commands above. If a recurring automated delivery is desired, the same brief can be scheduled through the workflow/automation layer rather than changing the intelligence skill itself.
+Most monitoring cycles should produce **no alert**. The goal is to interrupt the PM only when something is genuinely material.
 
-## Focused intelligence scan
+The PM can also request an ad-hoc scan after hearing about something important:
 
-Use a focused scan when you have a specific question:
-
-> **INTELLIGENCE SCAN**
->
-> What changed globally this month around mandatory upfront age verification for U16 social-media access? Focus on enacted or effective requirements, major proposals, court challenges, and platform responses.
-
-Or:
-
-> **INTELLIGENCE SCAN**
->
-> Compare the latest public age-assurance approaches from Meta, Google, Roblox, Snapchat, OpenAI, and Anthropic. Focus on U13/U16/U18, assurance approach, protected product scope, and how the approaches differ.
-
-The scan should be **decision-oriented**, not just topic-oriented. Ask it to explain what the evidence means for the product question.
+> “MAJOR-EVENT SCAN: Check what happened with the new France age-assurance development and tell me whether it is material for our roadmap.”
 
 ---
 
-## 4. SPAR — challenge my thinking
+## 3. SPAR — challenge my thinking
 
 This is the most important day-to-day behavior.
 
@@ -265,7 +278,7 @@ It should be comfortable saying:
 
 ---
 
-## 5. DECIDE / PLAN — make a product decision
+## 4. DECIDE — make a product decision
 
 Use this when you need a recommendation or planning output.
 
@@ -279,7 +292,7 @@ Example:
 
 Or:
 
-> **PLAN**
+> **DECIDE**
 >
 > Given everything currently in context, what should our strongest Q4 product objectives be?
 >
@@ -374,9 +387,9 @@ For any important recommendation, expect the workflow to tell you:
 
 > REFRESH: Here is the latest CSAT summary. Tell me what changed.
 
-### Wednesday — external intelligence
+### Wednesday — monitoring
 
-> INTELLIGENCE BRIEF: Give me this week's AA developments and tell me which ones could affect my roadmap.
+> The monitoring workflow checks for major AA developments. If one crosses the materiality threshold, it alerts the PM and updates the shared context.
 
 ### Thursday — PM hypothesis
 
@@ -386,11 +399,15 @@ For any important recommendation, expect the workflow to tell you:
 
 > DECIDE: US wants to accept school ID. Assess whether this is a good solution, using both our internal evidence and the latest external intelligence.
 
+### Weekly
+
+> “Give me this week's AA intelligence and tell me which developments could affect my roadmap.”
+
 ### Quarterly planning
 
-> INTELLIGENCE SCAN: Give me the major AA regulatory, competitor, and technology trends from the last quarter, then combine that with our current evidence and challenge my initial Q4 priorities.
+> “Review the last quarter of AA developments, combine them with our current evidence, and challenge my initial Q4 priorities.”
 
-> PLAN: Based on the current evidence and external intelligence, propose the strongest objectives. Don't simply convert my stated priorities into OKRs.
+> “DECIDE: Based on the current evidence and external intelligence, propose the strongest objectives. Don't simply convert my stated priorities into OKRs.”
 
 The workflow should pull together the accumulated context rather than starting from zero each time.
 
@@ -413,5 +430,6 @@ The architecture is intentionally modular:
 - **Product Context** stores the shared working state.
 - **Product Opportunity Engine** provides general PM reasoning.
 - **Specialist skills** provide domain-specific knowledge.
+- **Monitoring/automation** invokes specialist intelligence on a schedule or when an external trigger is available.
 
 The goal is to make the system reusable beyond Age Assurance without turning the core PM reasoning into a domain-specific prompt.
