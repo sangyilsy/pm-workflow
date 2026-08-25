@@ -1,66 +1,96 @@
 # Product Opportunity Engine
 
-A domain-general product discovery, hypothesis-testing, and prioritization skill for Product Managers.
+A domain-neutral product reasoning workflow for Product Managers.
 
 ## Goal
 
-Maintain a living product evidence base and turn messy internal information into:
+Turn messy information into:
 
-**evidence → signals → problems → hypotheses → opportunities → prioritized solutions → validation / decision**
+**information → evidence → signals → problems → hypotheses → opportunities → options → prioritization → decision**
 
-The engine is domain-general. Domain-specific taxonomies, risks, metrics, terminology, and specialist intelligence can be supplied through a **Domain Context**.
+The engine is intentionally generic. It does not assume an industry-specific taxonomy, lifecycle, metric, or risk model. Those can be added through a lightweight **Domain Context** when useful.
 
-## Operating modes
+## How a PM uses it
 
-- **BUILD CONTEXT** — ingest messy internal artifacts and establish product context.
-- **REFRESH** — add new information and update affected evidence, hypotheses, opportunities, and decisions.
-- **SPAR** — challenge the PM's thinking rather than simply agreeing with it.
-- **DECIDE / PLAN** — prioritize opportunities, solutions, experiments, and planning recommendations such as OKRs.
+### 1. SETUP
 
-## Supported inputs
+Provide a minimal profile once:
 
-The PM can simply throw in:
+> Product/area: B2B SaaS onboarding  
+> Users: workspace admins  
+> Goal: improve activation  
+> Key metric: 7-day activation  
+> Constraints: optional  
+> Specialist context: optional
 
-- Data-science analyses, dashboards, spreadsheets, CSVs, SQL outputs
-- Case reviews and examples
-- CSAT, surveys, interviews, support summaries
-- PRDs, RFCs, launch retrospectives
-- Figma/design links and user journeys
-- Vendor pricing and operating constraints
-- PM, engineering, legal, policy, and operations notes
-- Existing hypotheses and decision logs
-- Relevant external links
+The PM does not need to create a taxonomy.
 
-The PM does not need to pre-structure the information.
+### 2. INGEST
+
+Drop in whatever already exists: DS analyses, dashboards, case reviews, customer feedback, CSAT, PRDs, RFCs, launch retros, Figma, vendor information, notes, prior decisions, or links.
+
+The PM does not need to pre-structure it.
+
+### 3. REFRESH
+
+Whenever new information arrives:
+
+> “Add this month's CSAT. Tell me what changed in our evidence, hypotheses, and priorities.”
+
+### 4. SPAR
+
+> “I think our next-quarter priorities should be A, B, and C. Challenge my thinking based on everything we know.”
+
+The engine should challenge unsupported assumptions rather than optimize for agreement.
+
+### 5. DECIDE / PLAN
+
+> “Given the current evidence, what should we prioritize? Show alternatives, risks, economics, unknowns, and what evidence would change the recommendation.”
+
+### 6. CROSS-CHECK
+
+Use a specialist skill when the decision depends on external or domain-specific knowledge. For example, an AA decision can cross-check **Age Assurance Strategic Intelligence**.
 
 ## Evidence discipline
 
-A document is evidence of **what someone wrote or believed**, not automatic proof that the underlying statement is true.
+A document proves that a claim was written; it does not prove the claim is true. The engine independently distinguishes observed facts, derived facts, authoritative external facts, reported observations, company/vendor claims, documented assumptions, PM hypotheses, model inference, and unknowns.
 
-The engine independently distinguishes observed facts, derived facts, authoritative external facts, reported observations, company/vendor claims, documented assumptions, PM beliefs/hypotheses, model inferences, and unknowns.
+A formal PRD, previous analysis, or design can therefore be useful context while still being factually unverified.
 
-This prevents PRDs, designs, old analyses, or notes from silently turning hypotheses into facts.
+## Living Product Evidence Base
 
-## Product Evidence Base
+The engine tracks evidence, hypotheses, problems, opportunities/solutions, and decisions, including provenance, freshness, contradictions, limitations, and relationships between them.
 
-The engine maintains logical records for evidence items, hypotheses, problems, opportunities/solutions, and decisions. It tracks provenance, time period, evidence quality, epistemic status, freshness, contradictions, limitations, and relationships between evidence and hypotheses/decisions.
+New information can strengthen, weaken, reject, or create hypotheses.
 
 ## Cost-aware prioritization
 
-The engine treats economics as first-class evidence when supplied, including fixed/variable cost, cost per attempt, cost per successful outcome, vendor/operations cost, avoided cost, contract/volume economics, downstream loss, and opportunity cost.
+Economics are first-class evidence when supplied: fixed/variable cost, cost per successful outcome, vendor/operations cost, avoided cost, contract/volume economics, downstream loss, and opportunity cost.
 
-Cost is evaluated alongside user/business impact, evidence confidence, domain-specific risk, and effort.
+Cost is evaluated alongside impact, evidence confidence, domain-specific risk, and effort.
 
-## PM sparring
+## PM sparring + data discovery
 
-The engine is designed to challenge the PM. It tests unsupported assumptions, statements that are actually hypotheses, solution-first thinking, missing segmentation, base-rate errors, correlation vs. causation, counter-evidence, stale evidence, economics, domain-specific constraints, and alternative explanations.
+When evidence is missing, the engine should tell the PM exactly:
 
-When evidence is insufficient, it asks for specific supplemental data or proposes analyses/experiments and explains how each result would change the recommendation.
+- what question is unresolved;
+- why it matters;
+- what data/analysis/research would help;
+- what result would strengthen or weaken each hypothesis; and
+- how the recommendation would change.
 
-## Domain Context
+## Specialist / Domain Context
 
-A specialist domain context can provide product/domain taxonomy, lifecycle/journey model, domain-specific metrics, non-negotiable risks and constraints, terminology, regulatory/industry considerations, and specialist intelligence skills.
+A Domain Context may supply only what the generic engine cannot know, such as:
 
-For example, Age Assurance can be paired with **Age Assurance Strategic Intelligence**. The same engine can be reused for other PM domains.
+- domain vocabulary;
+- important product entities or journeys;
+- key metrics and denominators;
+- non-negotiable risks/constraints;
+- economic variables;
+- regulatory/industry requirements;
+- specialist intelligence or research.
 
-See [`SKILL.md`](./SKILL.md) for the full workflow and output specification.
+The same engine can therefore be reused across SaaS, payments, mobility, creator products, marketplace, social, enterprise, or other areas without rewriting the core reasoning framework.
+
+See [`SKILL.md`](./SKILL.md) for the full operating specification.
