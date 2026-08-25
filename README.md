@@ -45,14 +45,24 @@ Current example:
 
 You do **not** need to structure your information before giving it to the workflow. Throw in messy material and let the workflow structure it.
 
-The four core actions are:
+There are two kinds of work:
+
+**Internal product work** — understand your product, evidence, problems, hypotheses, and decisions.
+
+**External intelligence work** — monitor what is changing outside your product and understand what it could mean for strategy.
+
+The core actions are:
 
 | Action | Use when | Example |
 |---|---|---|
 | **SETUP** | First time establishing product context | “Set up context for our AA verification product.” |
-| **INGEST / REFRESH** | New data, docs, links, or analysis arrive | “Add this month's CSAT analysis and update what we know.” |
+| **INGEST / REFRESH** | New internal data, docs, links, or analysis arrive | “Add this month's CSAT analysis and update what we know.” |
+| **INTELLIGENCE BRIEF** | You want a recurring external landscape update | “Give me this week's AA intelligence brief.” |
+| **INTELLIGENCE SCAN** | You want a focused update on one topic | “Scan for major U16 age-assurance developments in the US this month.” |
 | **SPAR** | You have an idea, hypothesis, or proposed priority and want to be challenged | “I think Q4 should focus on A/B/C. Challenge this.” |
 | **DECIDE / PLAN** | You need a recommendation, prioritization, roadmap, or OKR direction | “Given everything we know, what should we prioritize next quarter?” |
+
+---
 
 ## 1. SETUP — establish your product context
 
@@ -98,7 +108,7 @@ A PRD or design is **not automatically a source of truth**. It records what the 
 
 ## 2. INGEST / REFRESH — throw in new information
 
-Use this whenever new information arrives.
+Use this whenever new internal information arrives.
 
 Examples:
 
@@ -139,7 +149,79 @@ The workflow should:
 
 ---
 
-## 3. SPAR — challenge my thinking
+# 3. EXTERNAL INTELLIGENCE — stay current on the outside world
+
+Specialist Intelligence is different from the Product Opportunity Engine: it monitors **external developments** rather than your internal product evidence.
+
+For Age Assurance, the specialist skill monitors:
+
+- Regulation and compliance
+- Competitor / industry moves
+- Age-assurance technology
+- Youth-safety and policy drivers
+- Cross-market strategic trends
+
+## Weekly intelligence brief
+
+Use this as the default recurring cadence for staying current:
+
+> **INTELLIGENCE BRIEF**
+>
+> Give me this week's Age Assurance Strategic Intelligence brief.
+>
+> Focus on the developments most likely to affect product strategy. Cover:
+> - top regulatory developments
+> - competitor / industry moves
+> - technology developments
+> - youth-safety / policy drivers
+> - cross-market trends
+> - strategic hypotheses that strengthened or weakened
+> - implications for our AA roadmap
+> - PM decisions / questions I should be thinking about
+> - watchlist for next week
+
+The brief should **not be a news dump**. It should prioritize developments that could change a product decision, roadmap, architecture, or compliance posture.
+
+A good weekly brief should answer:
+
+> **What changed?**
+>
+> **Why does it matter?**
+>
+> **What might this change for our product?**
+>
+> **What should I monitor next?**
+
+### When to run it
+
+A practical cadence is:
+
+- **Weekly:** broad intelligence brief to maintain situational awareness.
+- **Before quarterly planning:** broader strategic scan with emphasis on trends, strategic hypotheses, and roadmap implications.
+- **Before a major product decision:** focused intelligence scan on the specific question.
+- **After a major external event:** ad-hoc scan immediately rather than waiting for the weekly brief.
+
+The PM can trigger these manually with the commands above. If a recurring automated delivery is desired, the same brief can be scheduled through the workflow/automation layer rather than changing the intelligence skill itself.
+
+## Focused intelligence scan
+
+Use a focused scan when you have a specific question:
+
+> **INTELLIGENCE SCAN**
+>
+> What changed globally this month around mandatory upfront age verification for U16 social-media access? Focus on enacted or effective requirements, major proposals, court challenges, and platform responses.
+
+Or:
+
+> **INTELLIGENCE SCAN**
+>
+> Compare the latest public age-assurance approaches from Meta, Google, Roblox, Snapchat, OpenAI, and Anthropic. Focus on U13/U16/U18, assurance approach, protected product scope, and how the approaches differ.
+
+The scan should be **decision-oriented**, not just topic-oriented. Ask it to explain what the evidence means for the product question.
+
+---
+
+## 4. SPAR — challenge my thinking
 
 This is the most important day-to-day behavior.
 
@@ -183,7 +265,7 @@ It should be comfortable saying:
 
 ---
 
-## 4. DECIDE / PLAN — make a product decision
+## 5. DECIDE / PLAN — make a product decision
 
 Use this when you need a recommendation or planning output.
 
@@ -212,14 +294,15 @@ The output should normally include:
 5. Alternative solutions
 6. Risks and trade-offs
 7. Cost / economics
-8. What data should be collected next
-9. Recommended next actions
+8. Relevant external intelligence
+9. What data should be collected next
+10. Recommended next actions
 
 ---
 
-# Working with specialist intelligence
+# How internal and external intelligence work together
 
-Use the Product Opportunity Engine for the **internal product problem** and a specialist skill for the **external domain question**.
+A strong product decision often needs both.
 
 For example:
 
@@ -291,19 +374,25 @@ For any important recommendation, expect the workflow to tell you:
 
 > REFRESH: Here is the latest CSAT summary. Tell me what changed.
 
-### Wednesday — PM hypothesis
+### Wednesday — external intelligence
+
+> INTELLIGENCE BRIEF: Give me this week's AA developments and tell me which ones could affect my roadmap.
+
+### Thursday — PM hypothesis
 
 > SPAR: I think liveness is the main cause of verification failure. Challenge this.
 
-### Thursday — product inquiry
+### Friday — product inquiry
 
-> DECIDE: US wants to accept school ID. Assess whether this is a good solution.
-
-The workflow should pull together the accumulated context rather than starting from zero each time.
+> DECIDE: US wants to accept school ID. Assess whether this is a good solution, using both our internal evidence and the latest external intelligence.
 
 ### Quarterly planning
 
-> PLAN: Based on the current evidence and external intelligence, challenge my initial Q4 priorities and propose the strongest objectives.
+> INTELLIGENCE SCAN: Give me the major AA regulatory, competitor, and technology trends from the last quarter, then combine that with our current evidence and challenge my initial Q4 priorities.
+
+> PLAN: Based on the current evidence and external intelligence, propose the strongest objectives. Don't simply convert my stated priorities into OKRs.
+
+The workflow should pull together the accumulated context rather than starting from zero each time.
 
 ---
 
