@@ -1,6 +1,6 @@
-# AA Product Opportunity Engine
+# Product Opportunity Engine
 
-A persistent product discovery, hypothesis-testing, and prioritization skill for an Age Assurance PM.
+A domain-general product discovery, hypothesis-testing, and prioritization skill for Product Managers.
 
 ## Goal
 
@@ -8,12 +8,12 @@ Maintain a living product evidence base and turn messy internal information into
 
 **evidence → signals → problems → hypotheses → opportunities → prioritized solutions → validation / decision**
 
-The skill is intentionally broader than failure-rate analysis. It considers prevention, UX, communication, policy, assurance, fraud detection, cost optimization, operations, experiments, and reusable platform capabilities as potential intervention points.
+The engine is intentionally domain-general. Domain-specific taxonomies, risks, metrics, terminology, and specialist intelligence can be supplied through a **Domain Context**.
 
 ## Operating modes
 
-- **BUILD CONTEXT** — ingest a messy set of internal artifacts and establish product context.
-- **REFRESH** — add new information to the existing evidence base and update affected hypotheses/decisions.
+- **BUILD CONTEXT** — ingest messy internal artifacts and establish product context.
+- **REFRESH** — add new information and update affected evidence, hypotheses, opportunities, and decisions.
 - **SPAR** — challenge the PM's thinking rather than simply agreeing with it.
 - **DECIDE / PLAN** — prioritize opportunities, solutions, experiments, and planning recommendations such as OKRs.
 
@@ -23,19 +23,37 @@ The PM can simply throw in:
 
 - Data-science analyses, dashboards, spreadsheets, CSVs, SQL outputs
 - Case reviews and examples
-- CSAT, surveys, support summaries
+- CSAT, surveys, interviews, support summaries
 - PRDs, RFCs, launch retrospectives
 - Figma/design links and user journeys
 - Vendor pricing and operating constraints
 - PM, engineering, legal, policy, and operations notes
-- Existing hypotheses and decisions
+- Existing hypotheses and decision logs
 - Relevant external links
 
 The PM does not need to pre-structure the information.
 
-## Evidence model
+## Evidence discipline
 
-The skill maintains logical records for:
+A document is evidence of **what someone wrote or believed**, not automatic proof that the underlying statement is true.
+
+The engine independently distinguishes:
+
+- Observed fact
+- Derived fact
+- Authoritative external fact
+- Reported observation
+- Company/vendor claim
+- Documented assumption
+- PM belief/hypothesis
+- Model inference
+- Unknown/unverified
+
+This prevents PRDs, designs, old analyses, or notes from silently turning hypotheses into facts.
+
+## Product Evidence Base
+
+The engine maintains logical records for:
 
 - Evidence items
 - Hypotheses
@@ -43,63 +61,79 @@ The skill maintains logical records for:
 - Opportunities / solutions
 - Decisions
 
-It tracks source, time period, evidence quality, freshness, related hypotheses, contradictions, and limitations. New data can strengthen, weaken, reject, or create hypotheses.
+It tracks provenance, time period, evidence quality, epistemic status, freshness, contradictions, limitations, and relationships between evidence and hypotheses/decisions.
 
 ## Why this is different from simple analysis
 
-A failure does **not** automatically equal a product defect, but every failure category can still reveal product opportunities.
+The engine does not stop at identifying a failure or funnel drop-off. It explores the full opportunity space:
 
-The skill looks for opportunities in:
+- Prevention
+- Clarification
+- Early detection
+- Simplification
+- Capability improvement
+- Recovery/fallback
+- Policy or decisioning changes
+- Routing
+- Cost optimization
+- Operations
+- Experiments/research
+- Reusable platform capabilities
 
-- Legitimate users with avoidable failures
-- Legitimate users who are policy-ineligible or misunderstand the threshold
-- Fraud/spoof submissions that create avoidable cost or operational load
-- Ambiguous evidence that requires better instrumentation or research
-- System/vendor/operational failures
-
-It also searches across prevention, clarification, early detection, simplification, assurance, fallback/recovery, policy, routing, cost optimization, operations, and platform architecture.
+A population can be invalid, ineligible, abusive, or fraudulent and still reveal an intervention opportunity.
 
 ## Cost-aware prioritization
 
-The PM can provide fixed and variable cost structures for AA methods. The skill considers:
+The engine treats economics as first-class evidence when supplied:
 
+- Fixed and variable cost
 - Cost per attempt
-- Cost per successful legitimate outcome
-- Manual-review cost
-- Avoided vendor calls
+- Cost per successful outcome
+- Vendor/operations cost
+- Avoided cost
 - Contract/volume economics
-- Fallback/waterfall costs
-- Fraud/abuse cost implications
+- Downstream loss or support cost
+- Opportunity cost
 
-Cost is considered alongside user impact, evidence confidence, safety/privacy/regulatory risk, and effort rather than as a standalone optimization target.
+Cost is evaluated alongside user/business impact, evidence confidence, domain-specific risk, and effort.
 
 ## PM sparring
 
-The skill is explicitly designed to challenge the PM. It should test:
+The engine is designed to challenge the PM. It tests:
 
 - Unsupported assumptions
+- Claims that are actually hypotheses
 - Solution-first thinking
 - Missing segmentation
-- Base-rate errors
+- Base-rate and selection errors
 - Correlation vs causation
 - Counter-evidence
-- Safety/fraud implications
-- Privacy/accessibility implications
+- Stale evidence
 - Economic assumptions
-- Regulatory/competitor assumptions
+- Domain-specific risk/constraints
 - Better alternative explanations
 
-When evidence is insufficient, it should ask for specific supplemental data or propose concrete analyses/experiments and explain how each result would change the recommendation.
+When evidence is insufficient, it asks for specific supplemental data or proposes concrete analyses/experiments and explains how each result would change the recommendation.
 
-## Strategic Intelligence integration
+## Domain Context
 
-When a product question involves regulation, competitor precedent, AA technology, accepted evidence, youth-safety policy, or market trends, the skill can cross-check against the **Age Assurance Strategic Intelligence** skill.
+A specialist domain context can provide:
 
-This makes the two skills complementary:
+- Product/domain taxonomy
+- Lifecycle/journey model
+- Domain-specific metrics
+- Non-negotiable risks and constraints
+- Domain terminology
+- Regulatory/industry considerations
+- Specialist intelligence skills
 
-**Strategic Intelligence:** external world → strategy / product implications
+For Age Assurance, the intended specialist companion is **Age Assurance Strategic Intelligence**. The same Product Opportunity Engine can be reused with other domain contexts without rewriting its core reasoning.
 
-**Product Opportunity Engine:** internal evidence → problems / opportunities / decisions
+## Architecture
+
+**Product Opportunity Engine:** internal evidence → problems / hypotheses / opportunities / decisions
+
+**Specialist Intelligence:** external evidence → domain implications
 
 Together:
 
