@@ -492,6 +492,16 @@ When asked for a weekly or periodic brief:
 
 Avoid filling the brief with low-impact news merely to make it comprehensive.
 
+## Integration with the Product Opportunity Engine
+
+The **AA Product Opportunity Engine** is the complementary internal-evidence workflow.
+
+- **Strategic Intelligence:** external world → strategy / product implications.
+- **Product Opportunity Engine:** internal evidence → problems / hypotheses / opportunities / solutions.
+- **Combined:** internal evidence + external intelligence → stronger product decisions.
+
+When a Product Opportunity Engine decision references an external question, provide structured evidence using this skill's canonical taxonomy. When Strategic Intelligence receives an internal product proposal, do not invent internal metrics; identify what internal evidence the PM should supply or collect.
+
 ## Ad-hoc intelligence questions
 
 The skill should answer questions such as:
