@@ -1,66 +1,137 @@
 # Product Context
 
-A shared context layer for PM workflows and specialist skills.
+A shared, durable context layer for PM workflows and stakeholder-facing product knowledge.
 
 ## Purpose
 
-Maintain the durable context needed to reason about a product without forcing every specialist skill to ingest the same background repeatedly.
+Maintain a compact, living representation of a product so other capabilities do not have to repeatedly reconstruct the same background from scattered documents.
 
-Product Context is a **shared context capability, not a standalone analysis skill**. It stores product facts, current state, evidence, hypotheses, assumptions, decisions, and constraints so other workflows can consume the same source of truth.
+Product Context is **not** a decision-making skill and is not a replacement for source documents. It is a structured knowledge layer that records what the organization currently believes, what is supported by evidence, what has changed, what is planned, and what remains uncertain.
 
-## What belongs here
+## Core principle
+
+> **A document is evidence of what was documented, not automatic proof that the underlying statement is true.**
+
+A PRD may describe intended behavior. A Figma file may describe proposed UX. A roadmap may describe an intention. A launch document may describe what was shipped. Production telemetry may show what actually happened. Keep these distinct.
+
+## What belongs in Product Context
 
 ### Stable context
 
-- Product/domain description
-- Target users and key segments
-- Core user problems
-- Product surfaces/journeys
-- Markets/geographies
+- Product / service description
+- Target users and important segments
+- Core user problems / jobs to be done
+- Product surfaces and important journeys
+- Markets / geographies
 - Important terminology
-- Known constraints
+- Known dependencies and constraints
+- Ownership / organizational context where appropriate
 
 ### Current state
 
+- What is currently live
+- Current product behavior / user flow
+- Current policies / rules
+- Current integrations / adopters
 - Current goals / OKRs
 - Current roadmap priorities
-- Current product metrics
+- Current metrics where appropriate
 - Current experiments
-- Current vendors/partners where relevant
-- Current decisions
+- Current vendors / partners where relevant
+- Current decisions and known limitations
 
-### Evidence base
+### Historical state
 
-- Quantitative analyses
+- Previous product behavior
+- Launches / rollouts / rollbacks
+- Material changes and effective dates
+- Superseded requirements/designs
+- Historical decisions and their rationale when documented
+
+### Future state
+
+Always distinguish:
+
+- **Committed** — approved/planned work the organization has committed to
+- **Targeted** — intended timing/outcome, but not fully committed
+- **Proposed** — recommendation or idea under consideration
+- **Exploratory** — being investigated
+- **Deprecated** — intended for removal/replacement
+
+Never present proposed, targeted, or exploratory work as committed behavior.
+
+### Evidence
+
+- Quantitative analysis
 - Qualitative research
-- Case reviews
 - User feedback / support / CSAT
-- Product and design artifacts
-- Cost/economic information
-- External evidence when intentionally added
+- Case reviews
+- PRDs / RFCs / requirements
+- Design / Figma / prototypes
+- Launch / rollout / retrospective material
+- Engineering / implementation documentation
+- Vendor information and economics
+- Legal / policy / compliance documentation
+- PM / operations notes
+- External intelligence intentionally attached as context
 
-### Epistemic state
+## Evidence and epistemic status
 
-- Observed facts
-- Derived facts
-- External authoritative facts
-- Reported observations
-- Company/vendor claims
-- Documented assumptions
-- PM beliefs/hypotheses
-- Model inferences
-- Unknown/unverified claims
-- Open questions
+For material claims, distinguish at least:
 
-## Evidence discipline
+- **Observed fact** — directly measured or observed with clear provenance.
+- **Derived fact** — transparent calculation from observed data.
+- **Authoritative external fact** — supported by an authoritative external source.
+- **Reported observation** — reported by a user, operator, researcher, or other source and potentially requiring corroboration.
+- **Company/vendor claim** — statement made by a company or vendor about its product or performance.
+- **Documented assumption** — assertion embedded in a PRD, design, plan, or previous analysis without sufficient evidence.
+- **PM belief / hypothesis** — current interpretation or proposed explanation.
+- **Inference** — conclusion derived from available evidence but not directly observed.
+- **Unknown / unverified** — insufficient evidence.
 
-A source tells us what was written or observed; it does not automatically establish truth.
+Never silently upgrade an assumption or hypothesis into a fact because it appears in a formal document or has been repeated over time.
 
-A PRD, design, previous analysis, vendor proposal, or PM note may state a hypothesis as though it were a fact. Preserve the claim, but independently classify its epistemic status.
+## Source hierarchy by question
 
-Never silently upgrade a hypothesis because it appears in a formal, old, or authoritative-looking document.
+Use the source best suited to answering the specific question.
 
-When claims conflict, surface the conflict and prefer better-supported evidence.
+### What is live today?
+
+Prefer:
+
+1. Current production / implementation evidence
+2. Current support / operations material that reflects actual behavior
+3. Launch / release documentation
+4. Current approved requirements/designs
+5. Older documentation
+
+### What was intended?
+
+Prefer:
+
+1. Approved requirements
+2. Approved design
+3. Roadmap / planning material
+
+### What actually happened historically?
+
+Prefer:
+
+1. Dated launch/release records
+2. Production evidence
+3. Retrospectives / change logs
+4. Historical requirements/designs
+
+### What is planned?
+
+Prefer:
+
+1. Current approved roadmap / planning decisions
+2. Explicitly approved project plans
+3. Targeted plans
+4. Proposals / exploratory documents
+
+Always state commitment level when material.
 
 ## Context operations
 
@@ -68,34 +139,43 @@ When claims conflict, surface the conflict and prefer better-supported evidence.
 
 Use when establishing product context for the first time.
 
-The PM can provide a lightweight profile such as:
+A PM can provide a lightweight profile or simply dump material:
 
 ```text
-Product / domain:
+Product / service:
 Target users:
-Primary product goal:
-Key user journeys / surfaces:
+Primary goals:
+Important journeys / surfaces:
 Markets:
 Current priorities / OKRs:
 Key metrics:
 Known constraints:
-Relevant specialist skills:
-Initial artifacts / links:
+Relevant specialist intelligence:
+Artifacts / links:
 ```
 
-All fields are optional. The system should infer what it safely can from supplied material and explicitly flag what remains unknown.
+All fields are optional. Infer only what is supported by the supplied material and explicitly mark unknowns.
 
 ### INGEST
 
-Use when adding a substantial body of artifacts.
+Add one or more new artifacts to the context.
 
-Accept messy inputs without requiring the PM to pre-structure them. Record source, date/time period, type, scope, freshness, epistemic status, and limitations.
+The PM does not need to pre-structure the data. Extract relevant claims, facts, decisions, assumptions, and hypotheses and record provenance.
 
 ### REFRESH
 
 Use whenever new information arrives.
 
-Identify what is new, what it updates or supersedes, which hypotheses/decisions are strengthened or weakened, and which prior assumptions may now be stale.
+Reconcile it with existing context. Identify:
+
+- New facts
+- Superseded information
+- Contradictions
+- Updated current state
+- Updated future state
+- Strengthened / weakened hypotheses
+- Decisions that may need review
+- Information that has become stale
 
 ### CHECK
 
@@ -103,28 +183,66 @@ Use to inspect the current context.
 
 Examples:
 
-- What do we currently know about this product?
-- What are our strongest hypotheses?
-- Which assumptions are unverified?
-- What evidence is stale?
-- What decisions are currently open?
+- “What do we currently know about this product?”
+- “What is actually live today?”
+- “What changed since June?”
+- “What is planned versus merely proposed?”
+- “Which important claims are still unverified?”
+- “Where do our sources conflict?”
 
-## How other skills consume Product Context
+## Change ledger
 
-### Product Opportunity Engine
+Maintain a logical change history when evidence permits:
 
-Consumes Product Context to understand the product, current state, evidence, hypotheses, constraints, and decisions before analyzing opportunities or challenging PM thinking.
+- Change ID
+- Date / effective date
+- Product area
+- Previous state
+- New state
+- Reason, if documented
+- Source
+- Rollout status
+- Impacted stakeholders
+- Superseded-by information
 
-### Specialist intelligence skills
+Do not infer causality merely because a product change preceded a metric, CSAT, or support-volume change. Record temporal association separately from causal evidence.
 
-Consume Product Context to understand why external developments matter to the product. They should not overwrite internal evidence with external assumptions.
+## Current-state synthesis
 
-Example: Age Assurance Strategic Intelligence can use Product Context to map a new regulation to the relevant product surfaces, age cohorts, user journeys, and current roadmap.
+When answering “how does it work today?” do not simply retrieve the newest document.
 
-## Context lifecycle
+Reconstruct the current state by reconciling the strongest available evidence and effective dates. Clearly distinguish:
 
-Do not treat the context as an unlimited transcript. Maintain a compact current-state representation plus linked evidence.
+- Intended behavior
+- Shipped behavior
+- Observed behavior
+- Planned behavior
 
-Track freshness for information that changes frequently, including metrics, user behavior, vendor performance/pricing, market conditions, regulatory status, and competitor behavior.
+If the evidence does not establish current behavior confidently, say so and identify the source of uncertainty.
 
-Historical artifacts remain useful for understanding decisions and trends but should not automatically be treated as current state.
+## Context freshness
+
+Classify information as:
+
+- **Current** — likely representative now
+- **Aging** — still potentially useful but should be refreshed
+- **Stale** — should not materially drive a current decision/answer without validation
+- **Historical** — useful for history, not current state
+
+Freshness matters especially for metrics, user behavior, model performance, vendor information, roadmap, policies, and operational procedures.
+
+Recency does not by itself establish truth. Consider **recency + source strength + relevance to the claim**.
+
+## Stakeholder and access considerations
+
+Product Context may contain sensitive or internal-only information. Only expose information appropriate for the requesting audience and available authorization.
+
+When audience or authorization is unclear, avoid disclosing sensitive details and provide a higher-level answer.
+
+## Relationship to other capabilities
+
+Product Context is the universal foundation.
+
+- **Product Q&A** uses it to provide stakeholder-facing product knowledge.
+- **Product Opportunity Engine** uses it to understand product state, evidence, assumptions, and decisions before reasoning about opportunities.
+- **Specialist Intelligence** can consume Product Context to understand why external developments matter to the product. External intelligence should remain distinguishable from internal product facts.
