@@ -1,371 +1,217 @@
 # PM Workflow
 
-A practical PM workflow for turning product context, internal evidence, and external intelligence into better product decisions.
+A modular PM workflow for turning product knowledge, internal evidence, and domain intelligence into better product decisions — and making product knowledge easier for stakeholders to access.
 
-## What this is
-
-The workflow is built from three complementary capabilities:
+## Architecture
 
 ```text
-                    PRODUCT CONTEXT
-                          │
-             ┌────────────┴────────────┐
-             │                         │
-     PRODUCT OPPORTUNITY       SPECIALIST INTELLIGENCE
-          ENGINE                    e.g. AA
-             │                         │
-             └────────────┬────────────┘
-                          ↓
-                    PM DECISION
+                         PRODUCT KNOWLEDGE
+                               │
+                        Product Context
+                         /            \
+                        ↓              ↓
+                Product Q&A      PM Reasoning
+                  (XFN)                │
+                                     ↕
+                           Specialist Intelligence
+                              (optional/domain-specific)
 ```
 
-### 1. Product Context
+### Product Context — universal foundation
 
-Your shared working context: product, users, goals, current state, evidence, assumptions, hypotheses, decisions, and relevant artifacts.
+The shared, living representation of the product: what it is, who uses it, what is live, what changed, what is planned, the evidence behind it, and what remains uncertain.
 
-### 2. Product Opportunity Engine
+### Product Q&A — for stakeholders
 
-The general PM reasoning layer:
+Self-service product knowledge for Customer Support, Operations, Business, Legal, Policy, Government Relations, PR, Sales, Engineering, and other stakeholders.
+
+Use it for questions such as:
+
+- How does this feature work?
+- What is live today?
+- What changed recently?
+- What is planned?
+- Which teams use this service?
+- How should Support troubleshoot this?
+- Did we support this capability in 2024?
+
+### Product Opportunity Engine — for PMs
+
+The domain-general reasoning layer:
 
 **evidence → signals → problems → hypotheses → opportunities → solutions → prioritization → decision**
 
-It is domain-general and can be used for social, SaaS, marketplace, mobility, payments, consumer, enterprise, and other product areas.
+Use it to challenge assumptions, find problems and root-cause hypotheses, explore non-obvious solutions, and prioritize using impact, evidence confidence, risk, economics, and effort.
 
-### 3. Specialist Intelligence
+### Specialist Intelligence — optional and domain-specific
 
-Domain-specific external intelligence that helps answer questions the generic engine cannot answer by itself.
+External intelligence for domains where dedicated expertise materially matters.
 
 Current example:
 
 - **Age Assurance Strategic Intelligence** — regulation, competitors, technology, youth-safety policy, and AA-specific product implications.
 
+Specialist Intelligence is not required for every product area and should remain distinct from internal product facts.
+
 ---
 
-# How to use it
+# The five core actions
 
-You do **not** need to structure your information before giving it to the workflow. Throw in messy material and let the workflow structure it.
-
-There are two kinds of work:
-
-**Internal product work** — understand your product, evidence, problems, hypotheses, and decisions.
-
-**External intelligence work** — monitor what is changing outside your product and understand what it could mean for strategy.
-
-## The five core actions
-
-| Action | Use when | Example |
+| Action | Use it when | Example |
 |---|---|---|
-| **SETUP** | Establish or update shared product context | “Set up context for our AA verification product.” |
-| **REFRESH** | New internal or external information arrives | “Add this month's CSAT analysis and update what we know.” |
-| **SPAR** | You have an idea, hypothesis, or proposed priority and want to be challenged | “I think Q4 should focus on A/B/C. Challenge this.” |
-| **DECIDE** | You need a recommendation, prioritization, roadmap, or OKR direction | “Given everything we know, what should we prioritize next quarter?” |
-| **MAJOR-EVENT SCAN** | A monitoring workflow checks for material external developments | Automatically run by the monitoring/automation layer; the PM can also request one manually. |
+| **SETUP** | Establish or update the shared product context | `SETUP: Here are our PRDs, OKRs, metrics, designs and key constraints.` |
+| **REFRESH** | New information arrives | `REFRESH: Here is the latest CSAT analysis. Tell me what changed.` |
+| **SPAR** | You have an idea, hypothesis, or priority and want to be challenged | `SPAR: I think A/B should be our top priorities. Challenge this.` |
+| **DECIDE** | You need a recommendation, prioritization, roadmap, or OKR decision | `DECIDE: Given everything we know, what should we prioritize next quarter?` |
+| **MAJOR-EVENT SCAN** | A monitoring workflow checks for a material external development | Run automatically by a monitoring/automation layer; the PM can also request it manually. |
 
-You do not need separate commands for every kind of intelligence task. Ask naturally, and the relevant specialist intelligence capability should be used when needed.
+You do not need a separate command for every question. Ask naturally and use the relevant capability when needed.
 
----
+## SETUP — establish context
 
-## 1. SETUP — establish your product context
+Do this once at the beginning and update it when the product materially changes. You can also simply dump your existing product materials and ask the workflow to build context from them.
 
-Do this once at the beginning, then update it as the product changes.
+```text
+SETUP
+Product / service: ...
+Target users: ...
+Primary goals: ...
+Important journeys / surfaces: ...
+Markets: ...
+Current priorities / OKRs: ...
+Key metrics: ...
+Known constraints: ...
+Relevant specialist intelligence: ...
+Artifacts / links: ...
+```
 
-You can simply say:
+Fields are optional. The system should infer only what is supported and label what remains unknown.
 
-> **SETUP**
->
-> Product: Age Assurance for a global social platform
->
-> Users: users signing up and users going through age confirmation
->
-> Current goal: improve legitimate-user verification while controlling fraud and vendor cost
->
-> Priority market: US
->
-> Current product areas: signup, account, content, LIVE
->
-> Key metrics: verification completion, failure rate, repeat submissions, successful legitimate verification, vendor cost
->
-> Relevant artifacts: [PRD links], [Figma links], [DS analysis], [case review]
+## REFRESH — keep context current
 
-You do not need to fill every field. The workflow should infer what it can and identify what is missing.
+Use whenever a new document, analysis, design, metric, case review, decision, or external development arrives.
 
-### What gets remembered
-
-The shared context should distinguish:
-
-- Stable product context
-- Current goals / OKRs / roadmap state
-- Internal evidence
-- External evidence
-- Facts
-- Assumptions
-- Hypotheses
-- Open questions
-- Decisions
-
-A PRD or design is **not automatically a source of truth**. It records what the team believed or designed at that time; claims still need evidence.
-
----
-
-## 2. REFRESH — throw in new information
-
-Use this whenever new information arrives, whether it is internal product evidence or a new external development you want incorporated into the context.
+The PM can simply throw in messy material. The system should reconcile it with existing context, identify what changed, update hypotheses/decisions, and flag stale or conflicting information.
 
 Examples:
 
-> **REFRESH**
->
-> Here is the latest monthly CSAT summary after the launch. Add it to context and tell me what changed.
+> `REFRESH: Here is the latest monthly CSAT summary. Add it to context and tell me what changed.`
 
-Or:
+> `REFRESH: Here is a new launch doc and Figma. Reconcile them with the current product state.`
 
-> **REFRESH**
->
-> Here is a new regulatory development. Add it to the AA context, explain which strategic hypotheses it affects, and tell me whether any open product decisions should be revisited.
+## SPAR — challenge my thinking
 
-The workflow should:
+Use when you have a thesis or proposed direction.
 
-1. Extract relevant facts, metrics, claims, assumptions, and hypotheses.
-2. Identify contradictions and stale information.
-3. Update existing hypotheses rather than treating every artifact as isolated.
-4. Surface new signals and problems.
-5. Tell you whether the new evidence changes existing recommendations.
-6. Identify what additional data would materially reduce uncertainty.
+> `SPAR: I think these three problems should be our Q4 priorities. Challenge this using the evidence.`
 
-### Typical things you can throw in
+The workflow should distinguish facts from assumptions and hypotheses, look for alternative explanations, missing segmentation, stale evidence, counter-evidence, economics, and domain constraints. It should be willing to say that the evidence does not support the proposed priority.
 
-- DS analysis / notebook output
-- Dashboard screenshots or exports
-- CSV / spreadsheet / SQL output
-- Case reviews
-- CSAT / NPS / survey results
-- Support tickets and user feedback
-- PRDs / RFCs / launch retros
-- Figma / design links
-- Vendor pricing / proposals
-- Legal / policy documents
-- Engineering / operations notes
-- Previous decisions
-- External links
+## DECIDE — make a product decision
+
+Use for product proposals, roadmap decisions, investments, experiments, or OKR planning.
+
+> `DECIDE: Given the current evidence, should we adopt this proposal? Show alternatives, evidence, risks, economics, and unknowns.`
+
+When relevant, explicitly ask it to cross-check external intelligence:
+
+> `DECIDE: Should we accept this proposal? Use our internal product evidence and the latest relevant external intelligence.`
+
+The output should normally include the recommendation, evidence and counter-evidence, key hypotheses, alternatives, risks/trade-offs, economics, remaining uncertainty, and next actions.
 
 ---
 
-# External intelligence and monitoring
+# External intelligence for fast-moving domains
 
-Specialist Intelligence monitors **what is changing outside your product**. For Age Assurance, this includes:
-
-- Regulation and compliance
-- Competitor / industry moves
-- Age-assurance technology
-- Youth-safety and policy drivers
-- Cross-market strategic trends
-
-The PM should not need to remember to manually check the world every day. The long-term design is:
-
-```text
-External world
-      ↓
-Monitoring / scheduled trigger
-      ↓
-Specialist Intelligence
-      ↓
-Materiality filter
-      ↓
-Major event?
-   ↙       ↘
- No         Yes
- ↓           ↓
-Keep       Alert PM
-as context    +
-             update context
-```
-
-A skill is reactive by itself; **automatic Major-Event Scan requires a monitoring/automation layer to invoke the skill on a schedule or from an external trigger**.
+Specialist Intelligence is optional and domain-specific. For Age Assurance, it monitors regulation, competitors, technology, youth-safety policy, and cross-market trends.
 
 ### Weekly intelligence
 
-Weekly intelligence is a **cadence**, not a separate core command.
+Weekly intelligence is a **cadence**, not a separate core action. Ask naturally:
 
-The PM can request it naturally:
+> `Give me this week's AA intelligence and tell me which developments could affect my roadmap.`
 
-> “Give me this week's AA intelligence and tell me which developments could affect my roadmap.”
-
-A scheduled workflow can also run it automatically each week.
+A scheduled workflow can also run this automatically each week.
 
 The brief should prioritize:
 
-- Top regulatory developments
+- Material regulatory developments
 - Competitor / industry moves
 - Technology developments
-- Youth-safety / policy drivers
+- Relevant policy or market drivers
 - Cross-market trends
 - Strategic hypotheses strengthened or weakened
 - Product / roadmap implications
-- PM decisions or questions worth considering
-- Watchlist
+- PM questions and watchlist
 
-It should **not be a news dump**. The brief should answer:
+It should not be a news dump. The brief should answer:
 
-> **What changed?**
->
-> **Why does it matter?**
->
-> **What might this change for our product?**
->
-> **What should I monitor next?**
+> **What changed? Why does it matter? What might this change for our product? What should I monitor next?**
 
 ### Major-event monitoring
 
-The monitoring workflow should evaluate recent developments against a materiality threshold. Examples of potential major events include:
+The monitoring/automation layer can run a recurring scan of the external landscape. Specialist Intelligence evaluates candidate developments and surfaces only those that cross a materiality threshold.
 
-- A law or regulation that materially changes platform obligations
-- A significant court decision
-- Major regulator guidance
-- A major platform changing its age-assurance approach
-- A meaningful technology development that changes the assurance/friction/cost trade-off
-- A development that materially strengthens or weakens a strategic hypothesis
-- An event likely to require product, architecture, policy, or roadmap response
+A major event could be:
+
+- a material new regulation or court decision
+- major regulator guidance
+- a major platform changing its approach
+- a technology development that materially changes the cost/friction/assurance trade-off
+- an event that materially strengthens or weakens a strategic hypothesis
+- an event likely to require product, architecture, policy, compliance, or roadmap response
 
 Most monitoring cycles should produce **no alert**. The goal is to interrupt the PM only when something is genuinely material.
 
-The PM can also request an ad-hoc scan after hearing about something important:
+> `MAJOR-EVENT SCAN: Check the latest development and tell me whether it is material for our product.`
 
-> “MAJOR-EVENT SCAN: Check what happened with the new France age-assurance development and tell me whether it is material for our roadmap.”
-
----
-
-## 3. SPAR — challenge my thinking
-
-This is the most important day-to-day behavior.
-
-Do **not** ask the workflow simply to “help execute” an idea when you actually want product thinking.
-
-Instead say:
-
-> **SPAR**
->
-> For next quarter I think we should focus on improving completion, reducing vendor cost, and expanding accepted evidence types.
->
-> Challenge this thinking using everything we know.
->
-> Tell me:
-> - What is supported by evidence?
-> - What am I assuming?
-> - What might I be missing?
-> - What alternative explanations exist?
-> - What data would change the recommendation?
-
-The workflow should **not optimize for agreement**.
-
-It should challenge:
-
-- Unsupported assumptions
-- Statements that are actually hypotheses
-- Solution-first thinking
-- Poor problem framing
-- Missing segmentation
-- Correlation mistaken for causation
-- Base-rate errors
-- Selection bias
-- Stale evidence
-- Economic assumptions
-- Regulatory / competitive assumptions
-- Important counter-evidence
-
-It should be comfortable saying:
-
-> “I don't think the evidence supports that priority yet.”
+A skill is reactive on its own; automatic monitoring requires an automation/scheduling layer to invoke it.
 
 ---
 
-## 4. DECIDE — make a product decision
+# Product Q&A — stakeholder use
 
-Use this when you need a recommendation or planning output.
+Product Q&A is designed primarily for stakeholders, not for the PM's strategic reasoning.
 
-Example:
+Stakeholders can ask natural questions such as:
 
-> **DECIDE**
->
-> We have a proposal to accept school ID as proof of age in the US.
->
-> Evaluate whether we should adopt it using our internal evidence, external industry/regulatory intelligence, UX, privacy, assurance strength, fraud risk, cost, and implementation complexity.
+> `How does the latest flow work?`
 
-Or:
+> `A customer is stuck here. What should Support tell them?`
 
-> **DECIDE**
->
-> Given everything currently in context, what should our strongest Q4 product objectives be?
->
-> Don't simply convert my stated priorities into OKRs. Challenge them first.
+> `What changed in the last 30 days that could explain this increase in contacts?`
 
-The output should normally include:
+> `Which business teams are currently using this service?`
 
-1. Recommendation
-2. Evidence supporting it
-3. Counter-evidence / uncertainty
-4. Problems and hypotheses
-5. Alternative solutions
-6. Risks and trade-offs
-7. Cost / economics
-8. Relevant external intelligence
-9. What data should be collected next
-10. Recommended next actions
+> `What changes are planned that Operations should prepare for?`
 
----
+> `What is the current state of this product for Legal?`
 
-# How internal and external intelligence work together
+> `Did we support this capability in 2024?`
 
-A strong product decision often needs both.
-
-For example:
-
-> “Should we accept school ID as proof of age in the US?”
-
-The workflow can break that into:
-
-```text
-Internal evidence
-  ↓
-What problem are we actually solving?
-  ↓
-What hypotheses explain the problem?
-  ↓
-What external questions matter?
-  ↓
-AA Strategic Intelligence
-  ├── US regulatory requirements
-  ├── Industry precedent
-  ├── Technology / vendor options
-  └── Privacy / policy implications
-  ↓
-Back to Product Opportunity Engine
-  ↓
-Recommendation
-```
-
-The specialist skill should provide evidence and domain interpretation. The Product Opportunity Engine should synthesize it with the internal evidence and challenge the product decision.
+The skill uses Product Context and prioritizes **accuracy, freshness, provenance, and audience usefulness**. It should distinguish current, historical, intended, observed, and planned states and should not invent missing information.
 
 ---
 
 # Evidence discipline
 
-The workflow is deliberately skeptical.
+Formal documents are not automatically truth.
 
-A source being formal, recent, or written by the PM does **not** make its claims true.
+A PRD may contain a hypothesis. A Figma file may describe intended UX. A roadmap may describe a plan. A launch record may describe what shipped. Production or support evidence may describe what actually happens.
 
-The workflow should distinguish at least:
+For important answers and decisions, the workflow should distinguish:
 
-- Observed fact
-- Derived fact
-- Authoritative external fact
-- Reported observation
-- Company/vendor claim
-- Documented assumption
-- PM belief / hypothesis
-- Model inference
-- Unknown / unverified
+- Observed facts
+- Derived facts
+- Authoritative external facts
+- Reported observations
+- Company/vendor claims
+- Documented assumptions
+- PM beliefs/hypotheses
+- Inferences
+- Unknowns
 
-For any important recommendation, expect the workflow to tell you:
+The core questions are:
 
 > **What do we actually know?**
 >
@@ -373,43 +219,7 @@ For any important recommendation, expect the workflow to tell you:
 >
 > **What do we not know yet?**
 >
-> **What evidence would change the decision?**
-
----
-
-# A complete day-to-day example
-
-### Monday — setup
-
-> SETUP: Here are my product docs, current OKRs, DS analyses, designs, and vendor economics.
-
-### Tuesday — new data
-
-> REFRESH: Here is the latest CSAT summary. Tell me what changed.
-
-### Wednesday — monitoring
-
-> The monitoring workflow checks for major AA developments. If one crosses the materiality threshold, it alerts the PM and updates the shared context.
-
-### Thursday — PM hypothesis
-
-> SPAR: I think liveness is the main cause of verification failure. Challenge this.
-
-### Friday — product inquiry
-
-> DECIDE: US wants to accept school ID. Assess whether this is a good solution, using both our internal evidence and the latest external intelligence.
-
-### Weekly
-
-> “Give me this week's AA intelligence and tell me which developments could affect my roadmap.”
-
-### Quarterly planning
-
-> “Review the last quarter of AA developments, combine them with our current evidence, and challenge my initial Q4 priorities.”
-
-> “DECIDE: Based on the current evidence and external intelligence, propose the strongest objectives. Don't simply convert my stated priorities into OKRs.”
-
-The workflow should pull together the accumulated context rather than starting from zero each time.
+> **What evidence would change the conclusion?**
 
 ---
 
@@ -418,18 +228,20 @@ The workflow should pull together the accumulated context rather than starting f
 ```text
 skills/
 ├── product-context/
-│   └── ...                     # shared product context / context operations
+│   └── SKILL.md
+├── product-qna/
+│   ├── SKILL.md
+│   └── README.md
 ├── product-opportunity-engine/
-│   └── SKILL.md                # domain-general PM reasoning
+│   └── SKILL.md
 └── age-assurance-strategic-intelligence/
-    └── SKILL.md                # AA-specific external intelligence
+    └── SKILL.md
 ```
 
 The architecture is intentionally modular:
 
-- **Product Context** stores the shared working state.
-- **Product Opportunity Engine** provides general PM reasoning.
-- **Specialist skills** provide domain-specific knowledge.
-- **Monitoring/automation** invokes specialist intelligence on a schedule or when an external trigger is available.
-
-The goal is to make the system reusable beyond Age Assurance without turning the core PM reasoning into a domain-specific prompt.
+- **Product Context** is the universal knowledge foundation.
+- **Product Q&A** exposes that knowledge to stakeholders.
+- **Product Opportunity Engine** provides universal PM reasoning.
+- **Specialist Intelligence** adds domain-specific external intelligence where useful.
+- **Monitoring/automation** invokes Specialist Intelligence on a schedule or external trigger.
