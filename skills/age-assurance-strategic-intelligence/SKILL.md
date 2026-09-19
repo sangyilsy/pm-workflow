@@ -11,6 +11,216 @@ The skill has two equally important modes:
 
 Optimize for **decision usefulness, not news volume**.
 
+## Operating model
+
+Treat this skill as an embedded AA intelligence partner, not a news-research tool. It should enter the PM workflow at the moment external evidence can change a product understanding, decision, requirement, architecture, or roadmap assumption.
+
+The skill itself defines the domain reasoning, evidence policy, materiality rules, synthesis, and output. Scheduled monitoring, notifications, webhooks, or other agentic orchestration sit outside the skill and invoke it.
+
+### PM integration modes
+
+Use the smallest mode that fits the PM's actual task:
+
+1. **Decision cross-check** — test an active product decision against regulation, industry precedent, technology, standards, privacy, and known trade-offs.
+2. **Requirement interpretation** — translate a law, regulator statement, consultation, standard, or policy development into concrete product implications. Preserve proposal/enacted/effective/enforced status.
+3. **PRD / design review** — identify external constraints, relevant precedent, missing considerations, and assumptions before a design hardens.
+4. **Claim validation** — validate claims from vendors, competitors, internal teams, or public-policy stakeholders. Keep company/vendor performance claims attributed unless independently established.
+5. **Precedent search** — find credible public evidence for how regulators, platforms, standards bodies, or identity ecosystems have approached a specific AA problem.
+6. **Strategic synthesis** — connect multiple developments into product/architecture implications for planning.
+7. **Material change detection** — evaluate newly detected external developments and determine whether they warrant an immediate PM alert, inclusion in the weekly brief, or evidence storage only.
+
+Do not return a collection of research answers when the PM gives several related topics. Look for the common strategic movement, distinguish fact from interpretation, and translate it into concrete product questions or architecture implications.
+
+### Integration with Product Context and PM reasoning
+
+When Product Context is available, compare external developments against the current product architecture, supported methods, age thresholds, markets, decisions, hypotheses, experiments, roadmap, and known constraints.
+
+For an active PM decision, the intended flow is:
+
+```text
+PM question / PRD / decision
+        ↓
+Product Context
+        ↓
+AA Strategic Intelligence
+        ↓
+targeted external evidence
+        ↓
+strategic cross-check
+        ↓
+Product Opportunity Engine / PM decision
+```
+
+Do not assume that an external development requires a roadmap response. State when the correct action is to monitor, validate, prototype, or do nothing yet.
+
+## AA Major Event Watch
+
+Support a global proactive monitoring workflow called **AA Major Event Watch**. The watch is global by default; priority jurisdictions, platforms, technologies, and age thresholds may be configured without narrowing the underlying scope.
+
+The monitoring/orchestration layer should scan for new developments and invoke this skill for source validation, classification, materiality assessment, synthesis, and PM relevance.
+
+### Monitored streams
+
+#### 1. Regulatory & ecosystem watch
+
+Monitor globally for material changes including:
+
+- New or amended laws and regulations.
+- Regulatory guidance, codes, implementation rules, consultations, enforcement actions, and court decisions.
+- Minimum-age and social-media-access requirements.
+- Upfront, ongoing, or feature-level AA requirements.
+- Regulatory positions on acceptable assurance methods.
+- App-store, OS, device, network, or ecosystem age-signal requirements.
+- Government-backed digital identity, proof-of-age, wallet, and credential infrastructure.
+- Standards or certification changes with likely product or compliance impact.
+- Material implementation dates, delays, legal challenges, or reversals.
+
+Do not hard-code the watch to the UK or EU. Include US federal and state developments, Europe, UK, Australia, and other jurisdictions when developments could affect a global platform or establish meaningful precedent.
+
+#### 2. Competitor & platform watch
+
+Monitor significant AA developments from major social, video, gaming, communication, and relevant AI platforms. Priority examples include Meta/Instagram/Facebook, TikTok, Google/YouTube, Snapchat, Roblox, Discord, Reddit, and other platforms that become strategically relevant.
+
+Push-worthy competitor changes can include:
+
+- Signup or account-level age gating.
+- New or materially changed age inference, estimation, or verification.
+- New accepted evidence or external age signals.
+- App-store/OS/device age integration.
+- Digital wallet, proof-of-age, or reusable credential integration.
+- Changes to U13/U16/U18 or other meaningful thresholds.
+- Persistent age-state or age-based experience architecture.
+- Major changes to appeals, correction, reassessment, or false-positive recovery.
+- Privacy architecture changes such as on-device processing or data minimization.
+- Major rollout, expansion, delay, withdrawal, or reversal.
+- Publicly documented changes made in response to regulation or regulator engagement.
+
+Do not alert merely because a platform launched another general teen-safety feature. The development must materially affect understanding of age assurance, age-based access, or relevant product architecture.
+
+#### 3. Technology & identity ecosystem watch
+
+Monitor high-signal developments in age estimation, inference, verification, wallets, digital identity, reusable credentials, privacy-preserving proofs, app-store/OS age APIs, standards, and other AA infrastructure.
+
+Apply a higher alert threshold to vendor announcements and research. Marketing claims, benchmark claims, or prototypes should not trigger a major alert without evidence of meaningful capability, deployment, regulatory acceptance, or strategic relevance.
+
+### Materiality filter
+
+Every detected development must pass this sequence:
+
+```text
+new development
+      ↓
+credible source validation
+      ↓
+is it materially new?
+      ↓
+does it change or challenge:
+  • a regulatory obligation or interpretation?
+  • an AA strategic hypothesis?
+  • product architecture or method strategy?
+  • a roadmap or experiment assumption?
+  • a material competitor/industry pattern?
+      ↓
+compare against Product Context when available
+      ↓
+Major event → push
+Important development → weekly brief
+Background / low signal → store as evidence
+```
+
+Do not equate novelty with materiality.
+
+### Severity and cadence
+
+Use three internal severity levels:
+
+- **Major event** — push as soon as the monitoring cycle detects, validates, and assesses it. Include a concise reference in the next weekly synthesis without duplicating the full alert.
+- **Important development** — hold for the weekly brief unless it combines with other evidence to become materially important before then.
+- **Background / low signal** — retain as evidence when useful; do not interrupt the PM.
+
+Default monitoring cadence is **daily scanning plus a weekly synthesis**. Faster event/feed/webhook monitoring may be used where available, but speed should not come at the expense of primary-source validation or materiality assessment.
+
+The weekly brief should run even when there are no major alerts. It should synthesize the week's evidence, identify cross-signal patterns, and explain which strategic hypotheses strengthened, weakened, or remained unresolved. Do not merely repeat alerts already pushed.
+
+### Major-event alert format
+
+For a push-worthy development, produce:
+
+**AA MAJOR EVENT WATCH — [jurisdiction/platform/topic]**
+
+**What changed** — concise factual description.
+
+**Status** — proposed / enacted / effective / guidance / enforcement / deployed / experimental / reversed / other relevant status.
+
+**Primary source** — source and publication/update date.
+
+**Evidence quality** — what is established versus claimed or inferred.
+
+**Why this matters** — why the change is material to AA strategy rather than merely interesting.
+
+**Impact on strategic hypotheses** — explicitly state which hypotheses are strengthened, weakened, contradicted, or unaffected. Do not overstate a single signal.
+
+**Product Context relevance** — identify affected architecture, methods, thresholds, markets, journeys, experiments, or roadmap assumptions when Product Context is available.
+
+**Recommended posture** — act / validate / prototype / discuss with Legal or Policy / monitor / no action yet, with rationale.
+
+**What to watch next** — the concrete next milestone or evidence that could change the assessment.
+
+## Source-of-truth policy
+
+For Major Event Watch and high-impact PM decisions, apply a strict source hierarchy.
+
+### Tier 1 — source of truth
+
+Prefer and, where available, anchor conclusions in:
+
+- Official legislation, government, regulator, court, and public-agency publications.
+- Official European Commission and equivalent governmental/ regulatory materials.
+- Official platform newsroom, product/help documentation, policy pages, engineering/technical documentation, filings, and regulatory submissions.
+- Official standards-body publications and technical specifications.
+
+These establish what the authority or company officially published. They do not automatically establish the effectiveness of a product, technology, or policy.
+
+### Tier 2 — discovery and corroboration
+
+Use high-quality reporting such as Reuters, Financial Times, Bloomberg, or similarly established outlets to discover developments, understand context, or corroborate events. When a material claim originates in reporting, attempt to trace it to Tier 1 evidence before presenting it as established fact.
+
+### Tier 3 — leads only
+
+Treat social posts, newsletters, LinkedIn, Reddit, vendor marketing, consultancy commentary, advocacy material, and secondary industry analysis primarily as leads. Do not use them alone as the source of truth for a major regulatory or competitor alert.
+
+### Claim discipline
+
+An official company source proves that the company made the announcement or documented the behavior; it does not independently prove performance or effectiveness.
+
+Label evidence explicitly when needed:
+
+- **Established fact** — supported by authoritative/primary evidence appropriate to the claim.
+- **Company/vendor claim** — performance, intent, adoption, accuracy, or benefit asserted by the company/vendor.
+- **External observation** — credible third-party observation not independently established as internal fact.
+- **Strategic inference** — reasoned interpretation drawn from evidence.
+
+If a primary source cannot be found for a potentially major development, do not silently promote secondary reporting to source-of-truth status. State the limitation and lower confidence or hold the alert pending validation.
+
+## Competitor synthesis protocol
+
+Competitor intelligence must go beyond a platform-by-platform feature table.
+
+For meaningful competitor questions or developments:
+
+1. Normalize the comparison by jurisdiction, age threshold, lifecycle stage, protected scope, assurance approach, age evidence, enforcement action, privacy model, and maturity.
+2. Identify **convergence** only when multiple credible platform signals support it.
+3. Identify **divergence** where platforms are making meaningfully different architectural or policy choices.
+4. Compare those patterns against Product Context when available.
+5. State which existing strategic hypotheses become stronger, weaker, contradicted, or remain unresolved.
+6. Separate publicly documented behavior from inferred architecture or intent.
+7. Do not recommend copying a competitor merely because it launched something.
+8. Highlight whether a competitor development provides evidence for a reusable architecture pattern, regulatory response, method strategy, privacy pattern, or user-experience trade-off.
+
+A strong competitor synthesis should answer:
+
+> What are platforms actually changing, what pattern—if any—is emerging, how does it compare with our current architecture, and what should we reconsider or validate as a result?
+
 ## PM scope
 
 The skill is designed for a PM responsible for:
